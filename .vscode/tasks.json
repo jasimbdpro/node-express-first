@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Dev Server",
+            "type": "shell",
+            "command": "npm run dev",
+            "problemMatcher": [],
+            "isBackground": true
+        },
+        {
+            "label": "Live Server",
+            "type": "shell",
+            "command": "live-server --open=public --port=5500",
+            "problemMatcher": [],
+            "isBackground": true,
+            "dependsOn": "Run Dev Server"
+        }
+    ]
+}
