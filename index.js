@@ -7,12 +7,12 @@ const port = 3000
 
 //get  
 app.get('/name', (req, res) => {
-    res.send('Jasim Uddin khan')
+    res.send('Jasim Uddin')
 })
 
 app.get('/', (req, res) => {
     const fruits = {
-        product: 'adafddgggfhhhhhh',
+        product: 'Git Connected',
         price: 200
     }
     res.send(fruits)
