@@ -34,7 +34,7 @@ app.get('/fruits/banana', (req, res) => {
 })
 
 //post
-app.post('/addUser', (req, res) => {
+app.post('/adduser', (req, res) => {
     const user = req.body
     user.id = 55
     res.send(user)
@@ -43,3 +43,6 @@ app.post('/addUser', (req, res) => {
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+//Hosted version of the API
+//https://node-mongo-jasimbdpro.vercel.app/
