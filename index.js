@@ -1,48 +1,50 @@
-const express = require('express')
-const app = express()
-const cors = require('cors')
-app.use(cors())
-app.use(express.json())
-const port = 3000
+const express = require('express');
+const app = express();
+const cors = require('cors');
+app.use(cors());
+app.use(express.json());
+const port = 3000;
 
-//get  
+let users = ['Asad', 'Moin', 'Sabed', 'Susmita', 'Sohana'];  // Array to store user names
+
+// GET endpoints
 app.get('/name', (req, res) => {
-    res.send('Jasim Uddin')
-})
+    res.send('Jasim Uddin');
+});
 
 app.get('/', (req, res) => {
     const fruits = {
         product: 'Git Connected',
         price: 200
-    }
-    res.send(fruits)
-})
-const users = ['Asaddgg', 'Moin', 'Sabeddd', 'Susmita', 'Sohana']
-app.get('/users', (req, res) => {
-    res.send(users)
-})
-app.get('/users/:id', (req, res) => {
-    console.log(req.params)
-    const userId = req.params.id
-    const name = users[userId]
-    res.send({ name, userId })
-})
+    };
+    res.send(fruits);
+});
 
+app.get('/users', (req, res) => {
+    res.send(users);
+});
+
+app.get('/users/:id', (req, res) => {
+    const userId = req.params.id;
+    const name = users[userId];
+    res.send({ name, userId });
+});
 
 app.get('/fruits/banana', (req, res) => {
-    res.send({ fruit: 'banana', quantity: 10000 })
-})
+    res.send({ fruit: 'banana', quantity: 10000 });
+});
 
-//post
+// POST endpoint to add new users
 app.post('/adduser', (req, res) => {
-    const user = req.body
-    user.id = 55
-    res.send(user)
-})
+    const { name } = req.body;
+    if (name) {
+        users.push(name);  // Add the new name to the array
+        res.status(201).send({ name, id: users.length - 1 });  // Send back the added user info
+    } else {
+        res.status(400).send({ error: 'Name is required' });
+    }
+});
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
-
-//Hosted version of the API
-//https://node-mongo-jasimbdpro.vercel.app/
+    console.log(`Example app listening on port ${port}`);
+});
